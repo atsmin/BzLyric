@@ -18,7 +18,7 @@ with open('./urls.txt', 'r') as f:
         title = title.replace(' 歌詞', '').strip()
         print title
 
-        lyric = '\n'.join([x.encode('utf-8') for x in soup.find(id='Lyric').stripped_strings])
+        lyric = '\n'.join([x.encode('utf-8') for x in soup.find(id='Lyric').stripped_strings if len(x) > 0])
         lyric = lyric.replace('<br/>', '。').replace('(※くり返し)', '').replace('(△くり返し)', '').replace('※', '').replace('△', '')
         lyric = lyric.strip()
         with open(DIR + '/' + title, 'w') as f2:
